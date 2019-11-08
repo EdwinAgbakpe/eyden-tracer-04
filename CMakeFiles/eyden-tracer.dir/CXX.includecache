@@ -28,6 +28,16 @@ types.h
 types.h
 /Users/edwinagbakpe/eyden-tracer-04/src/types.h
 
+/Users/edwinagbakpe/eyden-tracer-04/src/LightArea.h
+ILight.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ILight.h
+random.h
+/Users/edwinagbakpe/eyden-tracer-04/src/random.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/LightPoint.h
+ILight.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ILight.h
+
 /Users/edwinagbakpe/eyden-tracer-04/src/Prim.h
 types.h
 /Users/edwinagbakpe/eyden-tracer-04/src/types.h
@@ -35,6 +45,14 @@ IShader.h
 /Users/edwinagbakpe/eyden-tracer-04/src/IShader.h
 BoundingBox.h
 /Users/edwinagbakpe/eyden-tracer-04/src/BoundingBox.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/PrimPlane.h
+Prim.h
+/Users/edwinagbakpe/eyden-tracer-04/src/Prim.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/PrimSphere.h
+Prim.h
+/Users/edwinagbakpe/eyden-tracer-04/src/Prim.h
 
 /Users/edwinagbakpe/eyden-tracer-04/src/PrimTriangle.h
 Prim.h
@@ -96,11 +114,53 @@ ShaderFlat.h
 Scene.h
 /Users/edwinagbakpe/eyden-tracer-04/src/Scene.h
 
+/Users/edwinagbakpe/eyden-tracer-04/src/ShaderPhongBumpMapped.h
+ShaderFlat.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ShaderFlat.h
+Scene.h
+/Users/edwinagbakpe/eyden-tracer-04/src/Scene.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/main.cpp
+Scene.h
+/Users/edwinagbakpe/eyden-tracer-04/src/Scene.h
+CameraPerspective.h
+/Users/edwinagbakpe/eyden-tracer-04/src/CameraPerspective.h
+PrimSphere.h
+/Users/edwinagbakpe/eyden-tracer-04/src/PrimSphere.h
+PrimPlane.h
+/Users/edwinagbakpe/eyden-tracer-04/src/PrimPlane.h
+PrimTriangle.h
+/Users/edwinagbakpe/eyden-tracer-04/src/PrimTriangle.h
+ShaderFlat.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ShaderFlat.h
+ShaderEyelight.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ShaderEyelight.h
+ShaderPhong.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ShaderPhong.h
+ShaderPhongBumpMapped.h
+/Users/edwinagbakpe/eyden-tracer-04/src/ShaderPhongBumpMapped.h
+LightPoint.h
+/Users/edwinagbakpe/eyden-tracer-04/src/LightPoint.h
+LightArea.h
+/Users/edwinagbakpe/eyden-tracer-04/src/LightArea.h
+timer.h
+/Users/edwinagbakpe/eyden-tracer-04/src/timer.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/random.h
+types.h
+/Users/edwinagbakpe/eyden-tracer-04/src/types.h
+random
+-
+
 /Users/edwinagbakpe/eyden-tracer-04/src/ray.h
 types.h
 /Users/edwinagbakpe/eyden-tracer-04/src/types.h
 
 /Users/edwinagbakpe/eyden-tracer-04/src/texture.h
+types.h
+/Users/edwinagbakpe/eyden-tracer-04/src/types.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/timer.h
 types.h
 /Users/edwinagbakpe/eyden-tracer-04/src/types.h
 
