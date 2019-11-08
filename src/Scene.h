@@ -3,9 +3,9 @@
 #include "ILight.h"
 #include "Prim.h"
 #include "CameraPerspective.h"
-#ifdef ENABLE_BSP
-#include "BSPTree.h"
-#endif
+// #ifdef ENABLE_BSP
+// #include "BSPTree.h"
+// #endif
 
 /**
  * @brief Scene class
@@ -63,14 +63,14 @@ public:
 	 */
 	bool Intersect(Ray& ray) const
 	{
-#ifdef ENABLE_BSP
-		return m_pBSPTree->Intersect(ray);
-#else
+// #ifdef ENABLE_BSP
+// 		return m_pBSPTree->Intersect(ray);
+// #else
 		bool hit = false;
 		for (auto pPrim : m_vpPrims)
 		  hit |= pPrim->Intersect(ray);
 		return hit;
-#endif
+// #endif
 	}
 
 	/**
@@ -79,38 +79,38 @@ public:
 	 */
 	bool Occluded(Ray& ray)
 	{
-#ifdef ENABLE_BSP
-		return m_pBSPTree->Intersect(ray);
-#else
+// #ifdef ENABLE_BSP
+// 		return m_pBSPTree->Intersect(ray);
+// #else
 		for (auto pPrim : m_vpPrims)
 			if (pPrim->Occluded(ray)) return true;
 		return false;
-#endif
+// #endif
 	}
 
-#ifdef ENABLE_BSP
-	/**
-	 * @brief Calculates and return the bounding box, containing the whole scene
-	 * @return The bounding box, containing the whole scene
-	 */
-	CBoundingBox CalcBounds(void)
-	{
-		CBoundingBox res;
-		for (auto pPrim : m_vpPrims)
-			res.extend(pPrim->calcBounds());
-		return res;
-	}
-	/**
-	 * @brief Build the BSP tree for the current scene
-	 * @details This function takes into accound all the primitives in scene and builds the BSP tree with the root node in \b m_pBSPTree variable
-	 */
-	void BuildAccelStructure(void)
-	{
-		CBoundingBox box = CalcBounds();
-		std::cout << "Bounds are : " << box.m_min << " " << box.m_max << std::endl;
-		m_pBSPTree = std::make_unique<BSPTree>(box, m_vpPrims);
-	}
-#endif
+// #ifdef ENABLE_BSP
+// 	/**
+// 	 * @brief Calculates and return the bounding box, containing the whole scene
+// 	 * @return The bounding box, containing the whole scene
+// 	 */
+// 	CBoundingBox CalcBounds(void)
+// 	{
+// 		CBoundingBox res;
+// 		for (auto pPrim : m_vpPrims)
+// 			res.extend(pPrim->calcBounds());
+// 		return res;
+// 	}
+// 	/**
+// 	 * @brief Build the BSP tree for the current scene
+// 	 * @details This function takes into accound all the primitives in scene and builds the BSP tree with the root node in \b m_pBSPTree variable
+// 	 */
+// 	void BuildAccelStructure(void)
+// 	{
+// 		CBoundingBox box = CalcBounds();
+// 		std::cout << "Bounds are : " << box.m_min << " " << box.m_max << std::endl;
+// 		m_pBSPTree = std::make_unique<BSPTree>(box, m_vpPrims);
+// 	}
+// #endif
 	
 	/**
 	 * @brief Traces the given ray and shade it
@@ -130,7 +130,7 @@ public:
 private:
 	Vec3f									m_bgColor	= RGB(0, 0, 0);    	///< background color
 	std::vector<std::shared_ptr<CPrim>> 	m_vpPrims;						///< primitives
-#ifdef ENABLE_BSP
-	std::unique_ptr<BSPTree>				m_pBSPTree	= nullptr;
-#endif
+// #ifdef ENABLE_BSP
+// 	std::unique_ptr<BSPTree>				m_pBSPTree	= nullptr;
+// #endif
 };
