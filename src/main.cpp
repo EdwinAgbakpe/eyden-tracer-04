@@ -11,9 +11,9 @@
 #include "ShaderPhong.h"
 #include "ShaderPhongBumpMapped.h"
 
-// #include "SampleGeneratorRegular.h"
-// #include "SampleGeneratorRandom.h"
-// #include "SampleGeneratorStratified.h"
+#include "SampleGeneratorRegular.h"
+#include "SampleGeneratorRandom.h"
+#include "SampleGeneratorStratified.h"
 
 #include "LightPoint.h"
 #include "LightArea.h"
@@ -25,34 +25,34 @@ Mat RenderFrame(void)
 	CScene scene;
 
 	// Load scene description 
-	//scene.ParseOBJ("/Users/edwinagbakpe/eyden-tracer-04/data/cone32.obj");
-//	scene.ParseOBJ("../data/barney.obj");
-//	scene.ParseOBJ("../data/ground.obj");
+	// scene.ParseOBJ("/Users/edwinagbakpe/eyden-tracer-04/data/cone32.obj");
+	// scene.ParseOBJ("/Users/edwinagbakpe/eyden-tracer-04/data/barney.obj");
+	scene.ParseOBJ("/Users/edwinagbakpe/eyden-tracer-04/data/ground.obj");
 
-// #ifdef ENABLE_BSP
-// 	// Build BSPTree
-// 	scene.BuildAccelStructure();
-// #endif
+#ifdef ENABLE_BSP
+	// Build BSPTree
+	scene.BuildAccelStructure();
+#endif
 
 	// --- Scene description for 4.2 only ---
 
-	auto shd1 = std::make_shared<CShaderPhongBumpMapped>(scene, RGB(1, 0, 0), 0.1f, 0.5f, 0.5f, 40); // red surface
-	auto shd2 = std::make_shared<CShaderPhongBumpMapped>(scene, RGB(1, 1, 0), 0.1f, 0.5f, 0.5f, 40); // yellow surface
+	// auto shd1 = std::make_shared<CShaderPhongBumpMapped>(scene, RGB(1, 0, 0), 0.1f, 0.5f, 0.5f, 40); // red surface
+	// auto shd2 = std::make_shared<CShaderPhongBumpMapped>(scene, RGB(1, 1, 0), 0.1f, 0.5f, 0.5f, 40); // yellow surface
 	
-	auto shd3 = std::make_shared<CShaderPhong>(scene, RGB(0, 1, 1), 0.1f, 0.5f, 0.5f, 40); // cyan surface
-	auto shd4 = std::make_shared<CShaderPhong>(scene, RGB(0, 0, 1), 0.1f, 0.5f, 0.5f, 40); // blue surface
-	//
-	scene.Add(std::make_shared<CPrimSphere>(Vec3f(-2, 1.7f, 0), 2, shd1));
-	scene.Add(std::make_shared<CPrimSphere>(Vec3f(1, -1, 1), 2.2f, shd3));
-	scene.Add(std::make_shared<CPrimSphere>(Vec3f(3, 0.8f, -2), 2, shd4));
-	scene.Add(std::make_shared<CPrimPlane>(Vec3f(0, -1, 0), Vec3f(0, 1, 0), shd2));
-	//
-	Vec3f pointLightIntensity(7, 7, 7);
-	Vec3f lightPosition2(-3, 5, 4);
-	Vec3f lightPosition3(0, 1, 4);
+	// auto shd3 = std::make_shared<CShaderPhong>(scene, RGB(0, 1, 1), 0.1f, 0.5f, 0.5f, 40); // cyan surface
+	// auto shd4 = std::make_shared<CShaderPhong>(scene, RGB(0, 0, 1), 0.1f, 0.5f, 0.5f, 40); // blue surface
+	// //
+	// scene.Add(std::make_shared<CPrimSphere>(Vec3f(-2, 1.7f, 0), 2, shd1));
+	// scene.Add(std::make_shared<CPrimSphere>(Vec3f(1, -1, 1), 2.2f, shd3));
+	// scene.Add(std::make_shared<CPrimSphere>(Vec3f(3, 0.8f, -2), 2, shd4));
+	// scene.Add(std::make_shared<CPrimPlane>(Vec3f(0, -1, 0), Vec3f(0, 1, 0), shd2));
+	// //
+	// Vec3f pointLightIntensity(7, 7, 7);
+	// Vec3f lightPosition2(-3, 5, 4);
+	// Vec3f lightPosition3(0, 1, 4);
 	
-	scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition2));
-	scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition3));
+	// scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition2));
+	// scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition3));
 
 	// --- End description for 4.2 ---
 
@@ -61,24 +61,36 @@ Mat RenderFrame(void)
 	Ray ray;                                          			// primary ray
 
 
-// #ifdef ENABLE_SUPERSAMPLING
-// 	auto sampleGenerator = std::make_unique<CSampleGeneratorRegular>();
-// //	auto sampleGenerator = std::make_unique<CSampleGeneratorRandom>();
-// //	auto sampleGenerator = std::make_unique<CSampleGeneratorStratified>();
-// 	int nSamples = 16;
+#ifdef ENABLE_SUPERSAMPLING
+	// auto sampleGenerator = std::make_unique<CSampleGeneratorRegular>();
+	// auto sampleGenerator = std::make_unique<CSampleGeneratorRandom>();
+	auto sampleGenerator = std::make_unique<CSampleGeneratorStratified>();
+	int nSamples = 4;
 
-// 	for (int y = 0; y < img.rows; y++) {
-// 		for (int x = 0; x < img.cols; x++) {
-// 			// --- PUT YOUR CODE HERE ---
-// 		}
-// 	}
-// #else
+	for (int y = 0; y < img.rows; y++) {
+		for (int x = 0; x < img.cols; x++) {
+			// --- PUT YOUR CODE HERE ---
+			Vec3f sum = Vec3f(0, 0, 0);
+			float u[nSamples], v[nSamples], weight[nSamples];
+			sampleGenerator->getSamples(nSamples, u, v, weight);
+			for(int i = 0; i < nSamples; i ++){
+				scene.m_pCamera->InitRay(x + u[i], y + v[i], ray);
+				sum += weight[i] * scene.RayTrace(ray);
+			}
+
+			img.at<Vec3f>(y, x) = sum;
+		
+
+			
+		}
+	}
+#else
 	for (int y = 0; y < img.rows; y++)
 		for (int x = 0; x < img.cols; x++) {
 			scene.m_pCamera->InitRay(x, y, ray); // initialize ray
 			img.at<Vec3f>(y, x) = scene.RayTrace(ray);
 		}
-// #endif
+#endif
 
 	img.convertTo(img, CV_8UC3, 255);
 	return img;

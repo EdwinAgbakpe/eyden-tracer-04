@@ -60,6 +60,7 @@ public:
 		
 		// --- PUT YOUR CODE HERE ---
 		Vec3f c = p - m_a;
+        
         float d00 = edge1.dot(edge1);
         float d01 = edge1.dot(edge2);
         float d11 = edge2.dot(edge2);

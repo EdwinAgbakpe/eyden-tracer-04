@@ -1,7 +1,7 @@
 #pragma once
 
 /* #undef ENABLE_BSP */
-/* #undef ENABLE_SUPERSAMPLING */
+#define ENABLE_SUPERSAMPLING	
 
 #include <optional>
 #include <vector>

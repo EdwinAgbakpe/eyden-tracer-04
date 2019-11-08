@@ -32,7 +32,6 @@ public:
 	{
 		// --- PUT YOUR CODE HERE ---
 		// get shading normal
-		//N' = Normalized(N + delta_u * dPdu + delta_v * dPdv).
 		Vec3f p = ray.org + ray.t * ray.dir;
 		Vec3f dPdu(1, 0, 0), dPdv(0, 0, 1);
 		double delta_u = 0.5 * cos(3 * p[0] * sin(p[2]));

@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/edwinagbakpe/eyden-tracer-04/src/BSPNode.h
+types.h
+/Users/edwinagbakpe/eyden-tracer-04/src/types.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/BSPTree.h
+BSPNode.h
+/Users/edwinagbakpe/eyden-tracer-04/src/BSPNode.h
+BoundingBox.h
+/Users/edwinagbakpe/eyden-tracer-04/src/BoundingBox.h
+
 /Users/edwinagbakpe/eyden-tracer-04/src/BoundingBox.h
 types.h
 /Users/edwinagbakpe/eyden-tracer-04/src/types.h
@@ -68,6 +78,32 @@ IShader.h
 PrimTriangleSmooth.h
 /Users/edwinagbakpe/eyden-tracer-04/src/PrimTriangleSmooth.h
 
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGenerator.h
+
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGeneratorRandom.h
+SampleGenerator.h
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGenerator.h
+time.h
+-
+stdlib.h
+-
+
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGeneratorRegular.h
+SampleGenerator.h
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGenerator.h
+math.h
+-
+
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGeneratorStratified.h
+SampleGenerator.h
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGenerator.h
+math.h
+-
+time.h
+-
+stdlib.h
+-
+
 /Users/edwinagbakpe/eyden-tracer-04/src/Scene.cpp
 Scene.h
 /Users/edwinagbakpe/eyden-tracer-04/src/Scene.h
@@ -93,6 +129,8 @@ Prim.h
 /Users/edwinagbakpe/eyden-tracer-04/src/Prim.h
 CameraPerspective.h
 /Users/edwinagbakpe/eyden-tracer-04/src/CameraPerspective.h
+BSPTree.h
+/Users/edwinagbakpe/eyden-tracer-04/src/BSPTree.h
 
 /Users/edwinagbakpe/eyden-tracer-04/src/ShaderEyelight.h
 ShaderFlat.h
@@ -139,6 +177,12 @@ ShaderPhong.h
 /Users/edwinagbakpe/eyden-tracer-04/src/ShaderPhong.h
 ShaderPhongBumpMapped.h
 /Users/edwinagbakpe/eyden-tracer-04/src/ShaderPhongBumpMapped.h
+SampleGeneratorRegular.h
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGeneratorRegular.h
+SampleGeneratorRandom.h
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGeneratorRandom.h
+SampleGeneratorStratified.h
+/Users/edwinagbakpe/eyden-tracer-04/src/SampleGeneratorStratified.h
 LightPoint.h
 /Users/edwinagbakpe/eyden-tracer-04/src/LightPoint.h
 LightArea.h

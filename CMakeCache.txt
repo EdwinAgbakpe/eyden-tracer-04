@@ -207,7 +207,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
 ENABLE_BSP:BOOL=OFF
 
 //Use super sampling
-ENABLE_SUPERSAMPLING:BOOL=OFF
+ENABLE_SUPERSAMPLING:BOOL=ON
 
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
